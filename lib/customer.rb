@@ -30,13 +30,12 @@ class Customer
       # add bonus for a two day new release rental
       frequent_renter_points += 1 if rental.movie.price_code == Movie::NEW_RELEASE && rental.days_rented > 1
       # show figures for this rental
-      result += "\t" + rental.movie.title + "\t" + this_amount + "\n"
+      result << "\t#{rental.movie.title}\t#{this_amount}\n"
       total_amount += this_amount
 
     end
     # add footer lines
-    result += "Amount owed is " + total_amount) + "\n"
-    result += "You earned " + frequent_renter_points + " frequent renter points"
-    result
+    result << "Amount owed is #{total_amount}\n"
+    result << "You earned #{frequent_renter_points} frequent renter points"
   end
 end
