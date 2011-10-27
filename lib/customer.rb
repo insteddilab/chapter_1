@@ -37,6 +37,6 @@ class Customer
     # add footer lines
     result += "Amount owed is " + total_amount) + "\n"
     result += "You earned " + frequent_renter_points + " frequent renter points"
-    result;
+    result
   end
 end
