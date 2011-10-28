@@ -1,3 +1,6 @@
+require 'movie'
+require 'rental'
+
 class Customer
   attr_accessor :name, :rentals
 
