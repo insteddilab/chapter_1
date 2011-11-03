@@ -13,6 +13,13 @@ describe Customer do
   end
 
   describe "print statement" do
+    before(:each) do
+      @customer.add_rental rental
+      @statement = @customer.statement
+    end
 
+    it "should include movie title and amount" do
+      @statement.should match /#{movie.title}\s2/
+    end
   end
 end
