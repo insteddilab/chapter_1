@@ -5,8 +5,10 @@ class Movie
 
   attr_accessor :title, :price_code
 
-  def initialize(title, price_code)
+  def initialize(title, price_code )
     @title = title
     @price_code = price_code
   end
+  
+  
 end
