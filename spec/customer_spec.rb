@@ -6,6 +6,12 @@ describe Customer do
     before(:each) do
       @customer = Customer.new 'Kola'
     end
+
+    it "should include movie title and price" do
+      movie = Movie.new 'Thor', Movie::REGULAR
+      @customer.add_rental(Rental.new movie, 1)
+      @customer.statement.should match /Thor\s2/
+    end
     
     def expect_rental_amount(movie, day_rented, total_amount)
       @customer.add_rental(Rental.new movie, day_rented)
@@ -27,8 +33,19 @@ describe Customer do
         end
       end
     end
+
+    context "for new release movie" do
+      let!(:movie) { Movie.new 'Rio', Movie::NEW_RELEASE }
+
+      [
+        [1, 3],
+        [2, 6],
+        [3, 9]
+      ].each do |day_rented, total_amount|
+        it "should total amount equal to #{total_amount} when rent for #{day_rented} (days)" do
+          expect_rental_amount movie, day_rented, total_amount
+        end
+      end
+    end
   end
 end
-
-
-
